@@ -125,7 +125,10 @@ function Hadith() {
   const [search, setSearch] = useState('');
   const [collectionFilter, setCollectionFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedHadithId, setSelectedHadithId] = useState(null);
+  const [listening, setListening] = useState(false);
   const pageSize = 5;
+  const supportsSpeech = typeof window !== 'undefined' && 'speechSynthesis' in window;
 
   const collections = useMemo(
     () => ['All', ...new Set(sahihHadiths.map((hadith) => hadith.collection))],
@@ -150,6 +153,42 @@ function Hadith() {
     const start = (currentPage - 1) * pageSize;
     return filteredHadiths.slice(start, start + pageSize);
   }, [currentPage, filteredHadiths]);
+
+  const getArabicVoice = () => {
+    if (!supportsSpeech) return null;
+    const voices = window.speechSynthesis.getVoices();
+    return (
+      voices.find((voice) => /arabic|ar-SA|Arabic|Saudi/i.test(voice.name)) ||
+      voices[0] ||
+      null
+    );
+  };
+
+  const playHadith = (hadith) => {
+    if (!supportsSpeech) return;
+
+    const utterance = new SpeechSynthesisUtterance(hadith.arabic);
+    const voice = getArabicVoice();
+    if (voice) utterance.voice = voice;
+    utterance.rate = 0.95;
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+    setSelectedHadithId(hadith.id);
+    setListening(true);
+
+    utterance.onend = () => {
+      setListening(false);
+      setSelectedHadithId(null);
+    };
+  };
+
+  const stopHadith = () => {
+    if (!supportsSpeech) return;
+    window.speechSynthesis.cancel();
+    setListening(false);
+    setSelectedHadithId(null);
+  };
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -196,6 +235,9 @@ function Hadith() {
           <p>
             This page displays Sahih hadiths with English and Arabic translations. Use search and filters to browse the collection.
           </p>
+          <p className="audio-note">
+            Audio playback is available via browser speech synthesis for supported devices.
+          </p>
         </div>
 
         <div className="verse-list">
@@ -204,6 +246,24 @@ function Hadith() {
               <h4>{hadith.title}</h4>
               <p className="verse-text">{hadith.english}</p>
               <p className="verse-arabic" dir="rtl">{hadith.arabic}</p>
+              <div className="audio-actions">
+                <button
+                  type="button"
+                  className="play-button"
+                  disabled={!supportsSpeech}
+                  onClick={() => playHadith(hadith)}
+                >
+                  {selectedHadithId === hadith.id && listening ? 'Listening...' : 'Play Recitation'}
+                </button>
+                <button
+                  type="button"
+                  className="stop-button"
+                  disabled={!supportsSpeech || !listening}
+                  onClick={stopHadith}
+                >
+                  Stop
+                </button>
+              </div>
               <div className="verse-meta">
                 <span>{hadith.collection}</span>
                 <strong>{hadith.reference}</strong>
