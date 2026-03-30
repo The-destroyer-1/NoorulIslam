@@ -251,7 +251,7 @@ body {
 .quran-grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
 }
 
 .quran-sidebar {
@@ -270,13 +270,81 @@ body {
 .surah-card {
   display: grid;
   gap: 0.35rem;
-  padding: 1rem 1.1rem;
+  padding: 0.95rem 1rem;
   border-radius: 22px;
   text-align: left;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.06);
   color: #e2e8f0;
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.quran-page .content-header {
+  align-items: flex-start;
+}
+
+.quran-page .audio-player,
+.quran-page .verse-list,
+.quran-page .quran-sidebar,
+.quran-page .quran-content {
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .quran-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .surah-list {
+    max-height: 48vh;
+  }
+
+  .quran-page .content-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 900px) {
+  .quran-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quran-sidebar,
+  .quran-content {
+    width: 100%;
+  }
+
+  .content-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .audio-player {
+    padding: 1rem;
+  }
+
+  .verse-text {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .quran-sidebar {
+    width: 100%;
+  }
+
+  .surah-card {
+    padding: 0.9rem 0.95rem;
+  }
+
+  .verse-text {
+    font-size: 1.2rem;
+  }
+
+  .verse-meta {
+    font-size: 0.9rem;
+  }
 }
 
 .surah-card:hover,
@@ -599,6 +667,20 @@ body {
 
   .verse-text {
     font-size: 1.25rem;
+  }
+
+  .quran-page .form-field {
+    width: 100%;
+  }
+
+  .quran-page .form-field select,
+  .quran-page .form-field input {
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .quran-page .content-header {
+    gap: 0.85rem;
   }
 
   .pagination-controls {
