@@ -1,0 +1,612 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at top, rgba(16, 185, 129, 0.16), transparent 35%),
+    linear-gradient(180deg, #030712 0%, #07121f 100%);
+  color: #f8fafc;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  background: rgba(3, 7, 18, 0.82);
+}
+
+.brand-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  background: rgba(16, 185, 129, 0.16);
+  font-size: 1.8rem;
+}
+
+.brand-bar h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: -0.04em;
+}
+
+.brand-bar p {
+  margin: 0.25rem 0 0;
+  color: #cbd5e1;
+  max-width: 420px;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.site-nav a {
+  color: #cbd5e1;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  color: #ecfccb;
+  background: rgba(16, 185, 129, 0.16);
+}
+
+.site-main {
+  flex: 1;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-panel {
+  width: 100%;
+  max-width: 100%;
+}
+
+.site-footer {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.section-panel {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 32px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.page-home {
+  position: relative;
+  min-height: calc(100vh - 152px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 40px;
+  background: radial-gradient(circle at top, rgba(16, 185, 129, 0.12), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.12), transparent 25%),
+    linear-gradient(180deg, #020617 0%, #07121f 100%);
+}
+
+.hero-card {
+  width: min(920px, calc(100% - 2rem));
+  padding: 2rem;
+}
+
+.glass-card {
+  display: grid;
+  gap: 1.5rem;
+  padding: 3rem;
+  border-radius: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(28px);
+  color: #f8fafc;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 42px 110px rgba(0, 0, 0, 0.25);
+}
+
+.hero-copy h2 {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  margin: 0;
+  line-height: 1.05;
+}
+
+.hero-copy p {
+  margin: 0 auto;
+  max-width: 780px;
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 1rem;
+  }
+
+  .glass-card {
+    padding: 2rem;
+    border-radius: 28px;
+  }
+
+  .hero-copy h2 {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+  }
+
+  .hero-copy p {
+    font-size: 1rem;
+  }
+}
+
+.hero-video {
+  display: none;
+}
+
+.eyebrow {
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #34d399;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.hero-copy h2 {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  margin: 0;
+  line-height: 1.05;
+}
+
+.hero-copy p {
+  margin: 1.5rem auto 0;
+  max-width: 780px;
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card-panel {
+  padding: 2rem;
+}
+
+.form-field {
+  width: 100%;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.form-field label {
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.form-field select,
+.form-field button,
+.form-field input {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.9);
+  color: #f8fafc;
+  padding: 1rem 1.25rem;
+}
+
+.form-field button {
+  cursor: pointer;
+  background: linear-gradient(135deg, #22c55e, #14b8a6);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+}
+
+.quran-page {
+  padding: 1rem;
+}
+
+.quran-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+}
+
+.quran-sidebar {
+  display: grid;
+  gap: 1rem;
+}
+
+.surah-list {
+  display: grid;
+  gap: 0.85rem;
+  max-height: 72vh;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.surah-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  border-radius: 22px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.surah-card:hover,
+.surah-card.active {
+  transform: translateX(4px);
+  background: rgba(34, 197, 94, 0.16);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.surah-card span {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.surah-card strong {
+  font-size: 0.95rem;
+  display: block;
+  color: #a7f3d0;
+}
+
+.surah-card small {
+  color: #94a3b8;
+}
+
+.quran-content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.content-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.content-header .description {
+  max-width: 720px;
+  margin-top: 0.5rem;
+  color: #cbd5e1;
+}
+
+.audio-player {
+  padding: 1.2rem 1.4rem;
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.verse-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.verse-card {
+  padding: 1.35rem 1.4rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.verse-text {
+  margin: 0;
+  font-size: 1.95rem;
+  line-height: 1.45;
+  color: #f8fafc;
+}
+
+.verse-meta {
+  margin-top: 1rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.verse-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.audio-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.audio-actions button {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(16, 185, 129, 0.14);
+  color: #f8fafc;
+  border-radius: 18px;
+  padding: 0.7rem 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.audio-actions button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(16, 185, 129, 0.25);
+}
+
+.audio-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.audio-note {
+  margin-top: 0.85rem;
+  color: #cbd5e1;
+  font-size: 0.98rem;
+}
+
+.loading-text,
+.error-text,
+.audio-warning {
+  color: #f1f5f9;
+}
+
+.error-text {
+  color: #fda4af;
+}
+
+@media (max-width: 960px) {
+  .quran-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .quran-sidebar,
+  .quran-content {
+    width: 100%;
+  }
+}
+
+.info-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.info-card {
+  padding: 1.5rem;
+  border-radius: 26px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.info-card h3 {
+  margin: 0 0 0.75rem;
+  color: #a7f3d0;
+}
+
+.info-card p,
+.info-card li {
+  color: #cbd5e1;
+  line-height: 1.8;
+}
+
+.table-stack {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table-stack th,
+.table-stack td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.table-stack th {
+  color: #a7f3d0;
+  font-weight: 700;
+}
+
+.table-stack td {
+  color: #e2e8f0;
+}
+
+.video-section {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.video-block {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.video-block iframe {
+  width: 100%;
+  min-height: 420px;
+  border: 0;
+}
+
+.verse-arabic {
+  margin: 0.85rem 0 0;
+  color: #dbeafe;
+  font-size: 1rem;
+  line-height: 1.85;
+  direction: rtl;
+  text-align: right;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pagination-controls {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pagination-controls button {
+  min-width: 112px;
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(16, 185, 129, 0.12);
+  color: #f8fafc;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  color: #a7f3d0;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .site-header,
+  .site-footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-copy {
+    padding: 3rem 1.5rem;
+  }
+
+  .site-nav a {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.95rem;
+  }
+
+  .card-panel {
+    padding: 1.5rem;
+  }
+
+  .verse-card {
+    padding: 1.25rem;
+  }
+
+  .verse-text {
+    font-size: 1.5rem;
+  }
+
+  .verse-arabic {
+    font-size: 0.96rem;
+  }
+
+  .audio-actions button {
+    padding: 0.65rem 0.85rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .brand-bar {
+    width: 100%;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-copy h2 {
+    font-size: 2.4rem;
+  }
+
+  .video-block iframe {
+    min-height: 260px;
+  }
+
+  .site-main {
+    padding: 1rem;
+  }
+
+  .card-panel {
+    padding: 1.2rem;
+  }
+
+  .form-field select,
+  .form-field button,
+  .form-field input {
+    padding: 0.95rem 1rem;
+  }
+
+  .verse-card {
+    padding: 1rem;
+  }
+
+  .verse-text {
+    font-size: 1.25rem;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pagination-controls button {
+    width: 100%;
+  }
+}
