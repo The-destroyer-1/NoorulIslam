@@ -679,6 +679,11 @@ body {
     font-size: 0.95rem;
   }
 
+  .quran-page .surah-list {
+    max-height: 12.5rem;
+    overflow-y: auto;
+  }
+
   .quran-page .content-header {
     gap: 0.85rem;
   }
