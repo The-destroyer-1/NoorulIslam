@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Prayer from './pages/Prayer.jsx';
 import Adhkar from './pages/Adhkar.jsx';
@@ -10,14 +10,14 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="app-shell">
         <header className="site-header">
           <div className="brand-bar">
             <span className="brand-icon">🕌</span>
             <div>
               <h1>NoorulIslam</h1>
-              <p>Professional Islamic portal for prayer times, adhkar, and spiritual learning.</p>
+            
             </div>
           </div>
 
@@ -29,7 +29,7 @@ function App() {
             <NavLink to="/hadith">Hadith</NavLink>
             <NavLink to="/dua">Dua</NavLink>
             <NavLink to="/team">Team</NavLink>
-            <NavLink to="/prayer">Prayer Times</NavLink>
+            <NavLink to="/prayer">Prayer</NavLink>
             <NavLink to="/adhkar">Adhkar</NavLink>
           </nav>
         </header>
@@ -50,7 +50,7 @@ function App() {
           © 2026 NoorulIslam. Built for a modern Islamic experience.
         </footer>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
