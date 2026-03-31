@@ -339,8 +339,14 @@ body {
     padding: 0.9rem 0.95rem;
   }
 
+  .verse-card {
+    padding: 1rem;
+  }
+
   .verse-text {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
   }
 
   .verse-meta {
@@ -413,6 +419,11 @@ body {
   font-size: 1.95rem;
   line-height: 1.45;
   color: #f8fafc;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  text-align: right;
 }
 
 .verse-meta {
